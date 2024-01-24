@@ -19,7 +19,7 @@ This project comprises a cryptographic library and application implementing SHA-
 ## Getting Started
 1. Download and open folder Ed448-master in chosen IDE.  
 1. Ensure necessary files are in `src/text_files/`.
-2. Run the application with specified command line arguments (refer to user guide for details).
+2. Run the application with specified command line arguments.
 3. Navigate through main menu and submenus for various cryptographic operations.
 
 ## Command Line Arguments
