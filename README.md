@@ -16,14 +16,21 @@ This project comprises a cryptographic library and application implementing SHA-
 ## File Structure
 - `src/text_files/`: Contains essential text files like passphrase, keys, and encrypted/decrypted messages.
 
+## Command Line Arguments Set-Up
+Execute the application with these command line arguments in their specific order:
+1. FirstArgument-PassphraseFilePath:‘src/text_files/my-passphrase.txt’
+2. SecondArgument-MessageFilePath:‘src/text_files/my-message.txt’
+3. ThirdArgument-PublicKeyFilePath:‘src/text_files/public-key.txt’
+4. FourthArgument-PrivateFilePath:‘src/text_files/private-key.txt’
+5. FifthArgument-EncryptedMessageFilePath: ‘src/text_files/encrypted-message.txt’
+6. SixthArgument-DecryptedMessageFilePath: ‘src/text_files/decrypted-message.txt’
+7. SeventhArgument-SignatureFilePath:‘src/text_files/signature.txt’
+
 ## Getting Started
 1. Download and open folder Ed448-master in chosen IDE.  
 1. Ensure necessary files are in `src/text_files/`.
 2. Run the application with specified command line arguments.
 3. Navigate through main menu and submenus for various cryptographic operations.
-
-## Command Line Arguments
-- Passphrase, message, public/private key paths, encrypted/decrypted message paths, and signature file paths.
 
 ## Usage
 - Generate elliptic key pairs, encrypt/decrypt files, sign/verify messages using command line and file inputs.
