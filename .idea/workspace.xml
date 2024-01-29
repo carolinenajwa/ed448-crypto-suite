@@ -5,10 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56b870c2-bed1-4fa9-b3cf-180410f9655e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Main.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ed448-master/src/Ed448Points.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ed448-master/src/Ed448Points.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ed448-master/out/production/Ed448/Crypt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ed448-master/out/production/Ed448/Ed448Points.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ed448-master/out/production/Ed448/KMACXOF256.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ed448-master/out/production/Ed448/KeyManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ed448-master/out/production/Ed448/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ed448-master/out/production/Ed448/SignatureManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ed448-master/out/production/Ed448/text_files/decrypted-message.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Ed448-master/out/production/Ed448/text_files/decrypted-message.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ed448-master/out/production/Ed448/text_files/encrypted-message.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Ed448-master/out/production/Ed448/text_files/encrypted-message.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ed448-master/out/production/Ed448/text_files/my-message.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Ed448-master/out/production/Ed448/text_files/my-message.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ed448-master/out/production/Ed448/text_files/my-passphrase.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Ed448-master/out/production/Ed448/text_files/my-passphrase.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ed448-master/out/production/Ed448/text_files/private-key.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Ed448-master/out/production/Ed448/text_files/private-key.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ed448-master/out/production/Ed448/text_files/public-key.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Ed448-master/out/production/Ed448/text_files/public-key.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ed448-master/out/production/Ed448/text_files/signature.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Ed448-master/out/production/Ed448/text_files/signature.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ed448-master/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ed448-master/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ed448-master/src/text_files/my-passphrase.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Ed448-master/src/text_files/my-passphrase.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ed448-master/src/text_files/my-message.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Ed448-master/src/text_files/my-message.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ed448-master/src/text_files/private-key.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Ed448-master/src/text_files/private-key.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ed448-master/src/text_files/public-key.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Ed448-master/src/text_files/public-key.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ed448-crypto-suite/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ed448-crypto-suite/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ed448-crypto-suite/text_files/my-message.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ed448-crypto-suite/text_files/my-message.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ed448-crypto-suite/text_files/private-key.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ed448-crypto-suite/text_files/private-key.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ed448-crypto-suite/text_files/public-key.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ed448-crypto-suite/text_files/public-key.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +70,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="AZURE_FUNCTION_SUPPORT" factoryName="Run Functions">
       <option name="appName" />
@@ -108,21 +133,11 @@
       <updated>1687381970700</updated>
       <workItem from="1706557459366" duration="1583000" />
       <workItem from="1706559146643" duration="1129000" />
+      <workItem from="1706561273326" duration="919000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Ed448-master/src/Main.java</url>
-          <line>396</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

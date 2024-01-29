@@ -2,7 +2,7 @@
   <configuration default="false" name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
     <option name="MAIN_CLASS_NAME" value="Main" />
     <module name="ed448-crypto-suite" />
-    <option name="PROGRAM_PARAMETERS" value="src/text_files/my-passphrase.txt src/text_files/my-message.txt src/text_files/public-key.txt src/text_files/private-key.txt src/text_files/encrypted-message.txt src/text_files/decrypted-message.txt src/text_files/signature.txt" />
+    <option name="PROGRAM_PARAMETERS" value="Ed448-master/src/text_files/my-passphrase.txt Ed448-master/src/text_files/my-message.txt Ed448-master/src/text_files/public-key.txt Ed448-master/src/text_files/private-key.txt Ed448-master/src/text_files/encrypted-message.txt Ed448-master/src/text_files/decrypted-message.txt Ed448-master/src/text_files/signature.txt" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>

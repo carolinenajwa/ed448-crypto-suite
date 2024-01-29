@@ -193,12 +193,10 @@ public class Main {
                     //Z <- k*G
                     Ed448Points Z = Ed448Points.scalarMultiply(Ed448Points.getPublicGenerator(), k);
 
-
                     // (ka || ke) <- KMACXOF256(W_x, "", 2*448, "PK")
                     byte[] ka_ke = KMACXOF256.getKMACXOF256(W.getXBytes(), "".getBytes(), 2*448, "PK");
                     byte[] ka = Arrays.copyOfRange(ka_ke, 0, ka_ke.length/2);
                     byte[] ke = Arrays.copyOfRange(ka_ke, ka_ke.length/2, ka_ke.length);
-
 
                     //c <- KMACXOF256(ke, "", |m|, "PKE") XOR m
                     byte[] cPreXOR = KMACXOF256.getKMACXOF256(ke, "".getBytes(), messageBytes.length * 8, "PKE");
@@ -451,12 +449,12 @@ public class Main {
     private static Ed448Points readPublicKey() {
         try {
             // Read the byte data from the file
-            byte[] publicKeyBytes = readByteData("src/text_files/public-key.txt");
+            byte[] publicKeyBytes = readByteData(publicKeyFilePath);
 
             // Convert the byte array back into a Point object.
             return unzipData(publicKeyBytes);
         } catch (Exception e) {
-            System.out.println("Error reading public key file: " + "src/text_files/public-key.txt");
+            System.out.println("Error reading public key file: " + publicKeyFilePath);
             return null;
         }
     }
