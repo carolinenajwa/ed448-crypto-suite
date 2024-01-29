@@ -14,9 +14,11 @@ public class Ed448Points {
     private BigInteger y;  // The y-coordinate of the point.
 
     // The prime modulus of the curve equation.
-    private static final BigInteger SOLINAS_PRIME = BigInteger.valueOf(2).pow(448).subtract(BigInteger.TWO.pow(224)).subtract(BigInteger.ONE);
-//    private static final String HEX_VALUE = "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF";
-//    private static final BigInteger SOLINAS_PRIME = new BigInteger(HEX_VALUE, 16);
+//    private static final BigInteger SOLINAS_PRIME = BigInteger.valueOf(2).pow(448).subtract(BigInteger.TWO.pow(224)).subtract(BigInteger.ONE);
+    private static final String HEX_VALUE = "fffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+            + "effffffffffffffffffffffffffffffffffffffffffffffffffffffff";
+    private static final BigInteger SOLINAS_PRIME = new BigInteger(HEX_VALUE, 16);
+
 
     private static final BigInteger D = BigInteger.valueOf(-39081); // The value of 'd' for the curve
 
@@ -115,16 +117,60 @@ public class Ed448Points {
      * @return The result of the scalar multiplication.
      */
     public static Ed448Points scalarMultiply(Ed448Points p, BigInteger s) {
-        Ed448Points product = new Ed448Points();
+        Ed448Points r0 = new Ed448Points();
+        Ed448Points r1 = new Ed448Points();
+        r1.copy(p);
+
         String bitString = s.toString(2);
-        Ed448Points n = p;
-        for (int i = bitString.length()-1; i >= 0; i--) {
-            if (bitString.charAt(i) == '1'){
-                product = Ed448Points.summation(product, n);
+        int idx = bitString.length() - 1;
+
+        while (idx >= 0) {
+            if (bitString.charAt(idx--) == '1') {
+                r0 = Ed448Points.summation(r0, r1);
+                r1 = Ed448Points.doublePoint(r1);
+            } else {
+                r1 = Ed448Points.summation(r0, r1);
+                r0 = Ed448Points.doublePoint(r0);
             }
-            n = Ed448Points.summation(n, n);
         }
-        return product;
+
+        return r0;
+    }
+
+    /**
+     * Doubles a point on the curve.
+     *
+     * @param p The point to be doubled.
+     * @return The doubled point.
+     */
+    public static Ed448Points doublePoint(Ed448Points p) {
+        BigInteger x = p.x;
+        BigInteger y = p.y;
+
+        BigInteger xSquared = x.multiply(x).mod(SOLINAS_PRIME);
+        BigInteger ySquared = y.multiply(y).mod(SOLINAS_PRIME);
+
+        BigInteger xySquared = x.add(y).multiply(x.add(y)).mod(SOLINAS_PRIME);
+
+        BigInteger denomDX = D.multiply(xSquared).multiply(ySquared);
+
+        BigInteger newXNum = (xySquared.add(ySquared).add(xSquared)).multiply((BigInteger.ONE.add(denomDX)).modInverse(SOLINAS_PRIME));
+        BigInteger newYNum = (xySquared.subtract(ySquared).subtract(xSquared)).multiply((BigInteger.ONE.subtract(denomDX).modInverse(SOLINAS_PRIME)));
+
+        BigInteger newX = newXNum.mod(SOLINAS_PRIME);
+        BigInteger newY = newYNum.mod(SOLINAS_PRIME);
+
+        return new Ed448Points(newX, newY);
+    }
+
+    /**
+     * Creates a copy of the given point.
+     *
+     * @param p The point to be copied.
+     * @return A copy of the point.
+     */
+    public static Ed448Points copy(Ed448Points p) {
+        return new Ed448Points(p.x, p.y);
     }
     
     /**

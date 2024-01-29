@@ -252,7 +252,7 @@ public class Main {
                     BigInteger secretBigInt = new BigInteger(1, secretBytes);
                     BigInteger s = secretBigInt.multiply(BigInteger.valueOf(4)).mod(R);
 
-                    byte[] cryptogram = loadFile(new File("src/text_files/encrypted-message.txt"));
+                    byte[] cryptogram = loadFile(new File(encryptedFilePath));
                     byte[] t = Arrays.copyOfRange(cryptogram, cryptogram.length - 56, cryptogram.length);
                     byte[] c = Arrays.copyOfRange(cryptogram, cryptogram.length - 56 - messageBytes.length, cryptogram.length - 56);
                     byte[] zData = Arrays.copyOfRange(cryptogram, 0, cryptogram.length - c.length - t.length);
