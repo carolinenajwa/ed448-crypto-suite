@@ -293,6 +293,7 @@ public class Main {
             }
         }
     }
+
     /**
      * Handles the generation of a digital signature.
      * Offers options to generate a signature or return to the main menu.

@@ -7,15 +7,29 @@
     <list default="true" id="56b870c2-bed1-4fa9-b3cf-180410f9655e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ed448-master/src/Ed448Points.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ed448-master/src/Ed448Points.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ed448-master/src/KMACXOF256.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ed448-master/src/KMACXOF256.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ed448-master/src/KeyManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ed448-master/src/KeyManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ed448-master/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ed448-master/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ed448-master/src/SignatureManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ed448-master/src/SignatureManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ed448-master/src/text_files/decrypted-message.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Ed448-master/src/text_files/decrypted-message.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ed448-master/src/text_files/encrypted-message.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Ed448-master/src/text_files/encrypted-message.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ed448-master/src/text_files/my-message.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Ed448-master/src/text_files/my-message.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ed448-master/src/text_files/my-passphrase.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Ed448-master/src/text_files/my-passphrase.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ed448-master/src/text_files/private-key.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Ed448-master/src/text_files/private-key.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ed448-master/src/text_files/public-key.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Ed448-master/src/text_files/public-key.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ed448-master/src/text_files/signature.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Ed448-master/src/text_files/signature.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ed448-crypto-suite/Ed448Points.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ed448-crypto-suite/Ed448Points.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ed448-crypto-suite/KMACXOF256.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ed448-crypto-suite/KMACXOF256.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ed448-crypto-suite/KeyManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ed448-crypto-suite/KeyManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ed448-crypto-suite/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ed448-crypto-suite/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ed448-crypto-suite/SignatureManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ed448-crypto-suite/SignatureManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ed448-crypto-suite/text_files/decrypted-message.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ed448-crypto-suite/text_files/decrypted-message.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ed448-crypto-suite/text_files/encrypted-message.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ed448-crypto-suite/text_files/encrypted-message.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ed448-crypto-suite/text_files/my-message.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ed448-crypto-suite/text_files/my-message.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ed448-crypto-suite/text_files/my-passphrase.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ed448-crypto-suite/text_files/my-passphrase.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ed448-crypto-suite/text_files/private-key.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ed448-crypto-suite/text_files/private-key.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ed448-crypto-suite/text_files/public-key.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ed448-crypto-suite/text_files/public-key.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ed448-crypto-suite/text_files/signature.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ed448-crypto-suite/text_files/signature.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +134,7 @@
       <updated>1687381970700</updated>
       <workItem from="1706557459366" duration="1583000" />
       <workItem from="1706559146643" duration="1129000" />
-      <workItem from="1706561273326" duration="1226000" />
+      <workItem from="1706561273326" duration="4650000" />
     </task>
     <servers />
   </component>

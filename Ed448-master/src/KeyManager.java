@@ -33,6 +33,7 @@ public class KeyManager {
         Ed448Points V = Ed448Points.scalarMultiply(G, s);
         writeByteData(publicOutputPath, pointDataZip(V));
     }
+
     /**
      * Writes a byte array to a file at the specified path.
      *
@@ -47,6 +48,7 @@ public class KeyManager {
             e.printStackTrace();
         }
     }
+
     /**
      * Zips the point data of an Ed448Points object into a byte array.
      * The byte array consists of the length of the x and y coordinates followed by their byte arrays.
@@ -63,6 +65,7 @@ public class KeyManager {
 
         return KMACXOF256.concatByteArr(xBytesLength, yBytesLength, xBytes, yBytes);
     }
+
     /**
      * Converts an integer to a 4-byte array.
      *

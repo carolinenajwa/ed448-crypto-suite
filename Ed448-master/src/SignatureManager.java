@@ -54,6 +54,7 @@ public class SignatureManager {
         System.out.println("Signature Saved To: " + outputPath);
         writeByteData(outputPath, signature);
     }
+
     /**
      * Verifies a digital signature against a given message and public key.
      * Prints the result of the verification process.
@@ -87,6 +88,7 @@ public class SignatureManager {
             System.out.println("Signature Verification Successful");
         else System.out.println("Signature Verification Fail!");
     }
+
     /**
      * Writes a byte array to a file at the specified path.
      *
@@ -123,6 +125,7 @@ public class SignatureManager {
             return new Ed448Points(new BigInteger(xBytes),new BigInteger(yBytes));
         } catch(Exception e) { return null;}
     }
+
     /**
      * Reads and converts a specific portion of a byte array into an integer array.
      * Used for processing zipped data.

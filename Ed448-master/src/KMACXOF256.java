@@ -453,9 +453,6 @@ public class KMACXOF256 {
         return mergedBuffer.array();
     }
 
-
-
-
     /**
      * Implements the sponge construction, a cryptographic primitive used in the
      * Keccak (SHA-3) family of cryptographic functions.
@@ -475,7 +472,6 @@ public class KMACXOF256 {
 
         return convertStateToArray(output, bitLen);
     }
-
 
     /**
      * Converts a segment of a byte array, starting from a specified index, into a 64-bit word.
