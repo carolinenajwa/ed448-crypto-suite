@@ -15,6 +15,9 @@ public class Ed448Points {
 
     // The prime modulus of the curve equation.
     private static final BigInteger SOLINAS_PRIME = BigInteger.valueOf(2).pow(448).subtract(BigInteger.TWO.pow(224)).subtract(BigInteger.ONE);
+//    private static final String HEX_VALUE = "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF";
+//    private static final BigInteger SOLINAS_PRIME = new BigInteger(HEX_VALUE, 16);
+
     private static final BigInteger D = BigInteger.valueOf(-39081); // The value of 'd' for the curve
 
     // Constants for internal calculations

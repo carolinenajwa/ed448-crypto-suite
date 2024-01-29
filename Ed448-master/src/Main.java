@@ -47,7 +47,7 @@ public class Main {
      * Path to the signature provided by the user as bytes.
      */
     private static String signFilePath;
-    
+
     /**
      * Path to the passphrase provided by the user as bytes.
      */
@@ -119,18 +119,25 @@ public class Main {
             2 - Go to Main Menu""");
         System.out.print("\nEnter Choice: ");
         String subChoice = scanner.nextLine();
-        
+
         switch (subChoice) {
             case "1" -> {
                 try {
-                    byte[] passphraseBytes = readFile(passphraseFilePath);
-                    KeyManager.generateKeyPairs(passphraseBytes, publicKeyFilePath, privateKeyFilePath);
-                    if (publicKeyFilePath != null) {
-                        System.out.println("Public key saved to " + publicKeyFilePath);
-                        System.out.println("Private key encrypted and saved to " + privateKeyFilePath);
-                    } else {
-                        System.out.println("No output file path provided via command-line arguments.");
+                    if (passphraseFilePath == null) {
+                        System.err.println("Passphrase file path is null.");
+                        break;
                     }
+                    byte[] passphraseBytes = readFile(passphraseFilePath);
+                    if (passphraseBytes == null) {
+                        System.err.println("Passphrase bytes are null. Check the readFile method.");
+                        break;
+                    }
+                    if (publicKeyFilePath == null || privateKeyFilePath == null) {
+                        System.err.println("Public or Private key file path is null.");
+                        break;
+                    }
+                    KeyManager.generateKeyPairs(passphraseBytes, publicKeyFilePath, privateKeyFilePath);
+                    // Rest of your code...
                 } catch (Exception e) {
                     System.err.println("Error generating key pair: " + e.getMessage());
                 }
@@ -159,7 +166,7 @@ public class Main {
         System.out.print("\nEnter Choice: ");
         String subChoice = scanner.nextLine();
         byte[] messageBytes = new byte[0];
-        
+
         if (subChoice.equals("1")) {
             messageBytes = readFile(messageFilePath);
         } else if (subChoice.equals("2")){
@@ -167,46 +174,46 @@ public class Main {
             messageBytes = scanner.nextLine().getBytes(StandardCharsets.UTF_8);
             writeByteData(messageFilePath, messageBytes);
         }
-        
+
         switch (subChoice) {
             case "1", "2" -> {
                 try {
                     SecureRandom random = new SecureRandom();
                     byte[] kBytes = new byte[56];
                     random.nextBytes(kBytes);
-                    
+
                     //k <- 4k(mod r)
                     BigInteger k = new BigInteger(1, kBytes);
                     k = k.multiply(BigInteger.valueOf(4)).mod(R);
-                    
+
                     Ed448Points V = readPublicKey();
-                    
+
                     //W <- k*V
                     Ed448Points W = Ed448Points.scalarMultiply(V, k);
                     //Z <- k*G
                     Ed448Points Z = Ed448Points.scalarMultiply(Ed448Points.getPublicGenerator(), k);
-                    
-                    
+
+
                     // (ka || ke) <- KMACXOF256(W_x, "", 2*448, "PK")
                     byte[] ka_ke = KMACXOF256.getKMACXOF256(W.getXBytes(), "".getBytes(), 2*448, "PK");
                     byte[] ka = Arrays.copyOfRange(ka_ke, 0, ka_ke.length/2);
                     byte[] ke = Arrays.copyOfRange(ka_ke, ka_ke.length/2, ka_ke.length);
-                    
-                    
+
+
                     //c <- KMACXOF256(ke, "", |m|, "PKE") XOR m
                     byte[] cPreXOR = KMACXOF256.getKMACXOF256(ke, "".getBytes(), messageBytes.length * 8, "PKE");
                     byte[] c = new byte[messageBytes.length];
                     for (int i = 0; i < messageBytes.length; i++) {
                         c[i] = (byte) (messageBytes[i] ^ cPreXOR[i]);
                     }
-                    
+
                     //t <- KMACXOF256(ka, messageAsBytes, 448, "PKA")
                     byte[] t = KMACXOF256.getKMACXOF256(ka, messageBytes, 448, "PKA");
-                    
+
                     //make one byte array of Z + c + t
                     byte[] pointZ = KeyManager.pointDataZip(Z);
                     byte[] finalCryptogram = KMACXOF256.concatByteArr(pointZ, c, t);
-                    
+
                     System.out.println("Encrypted Message Saved To " + encryptedFilePath);
                     writeByteData(encryptedFilePath, finalCryptogram);
                 } catch (Exception e) {
@@ -236,7 +243,7 @@ public class Main {
             2 - Go to Main Menu""");
         System.out.print("\nEnter Choice: ");
         String subChoice = scanner.nextLine();
-        
+
         switch (subChoice) {
             case "1" -> {
                 try {
@@ -246,28 +253,28 @@ public class Main {
                     byte[] secretBytes = KMACXOF256.getKMACXOF256(passphraseBytes, "".getBytes(), 448, "SK");
                     BigInteger secretBigInt = new BigInteger(1, secretBytes);
                     BigInteger s = secretBigInt.multiply(BigInteger.valueOf(4)).mod(R);
-                    
+
                     byte[] cryptogram = loadFile(new File("src/text_files/encrypted-message.txt"));
                     byte[] t = Arrays.copyOfRange(cryptogram, cryptogram.length - 56, cryptogram.length);
                     byte[] c = Arrays.copyOfRange(cryptogram, cryptogram.length - 56 - messageBytes.length, cryptogram.length - 56);
                     byte[] zData = Arrays.copyOfRange(cryptogram, 0, cryptogram.length - c.length - t.length);
-                    
+
                     Ed448Points Z = unzipData(zData);
                     Ed448Points W = Ed448Points.scalarMultiply(Z, s);
-                    
+
                     // (ka || ke) <- KMACXOF256(W_x, "", 2*448, "PK")
                     byte[] ka_ke = KMACXOF256.getKMACXOF256(W.getXBytes(), "".getBytes(), 2*448, "PK");
                     byte[] ka = Arrays.copyOfRange(ka_ke, 0, ka_ke.length / 2);
                     byte[] ke = Arrays.copyOfRange(ka_ke, ka_ke.length / 2, ka_ke.length);
-                    
+
                     byte[] mPreXOR = KMACXOF256.getKMACXOF256(ke, "".getBytes(), c.length * 8, "PKE");
-                    
+
                     byte[] m = new byte[c.length];
                     for (int i = 0; i < c.length; i++) {
                         m[i] = (byte) (c[i] ^ mPreXOR[i]);
                     }
                     byte[] t_prime = KMACXOF256.getKMACXOF256(ka, m, 448, "PKA");
-                    
+
                     if (Arrays.equals(t, t_prime)) {
                         System.out.println("Decrypted Message Saved To: " + decryptedFilePath);
                         writeByteData(decryptedFilePath, m);
@@ -302,7 +309,7 @@ public class Main {
         System.out.print("\nEnter Choice: ");
         String subChoice = scanner.nextLine();
         byte[] messageBytes = new byte[0];
-        
+
         if (subChoice.equals("1")) {
             messageBytes = readFile(messageFilePath);
         } else if (subChoice.equals("2")){
@@ -329,7 +336,7 @@ public class Main {
             }
         }
     }
-    
+
     /**
      * Handles the verification of a digital signature against a file.
      * Provides options to verify a signature or return to the main menu.
@@ -343,16 +350,16 @@ public class Main {
                 3 - Go to Main Menu""");
         System.out.print("\nEnter Choice: ");
         String subChoice = scanner.nextLine();
-        
+
         byte[] messageBytes = new byte[0];
-        
+
         if (subChoice.equals("1")) {
             messageBytes = readFile(messageFilePath);
         } else if (subChoice.equals("2")){
             System.out.print("Please manually input text to verify the signature: ");
             messageBytes = scanner.nextLine().getBytes(StandardCharsets.UTF_8);
         }
-        
+
         switch (subChoice) {
             case "1", "2" -> {
                 try {
@@ -374,7 +381,7 @@ public class Main {
             }
         }
     }
-    
+
     /**
      * Loads a file and returns its content as a byte array.
      * Continues to attempt to read the file until successful.
@@ -388,6 +395,7 @@ public class Main {
             bytes = readByteData(String.valueOf(thefile));
         return bytes;
     }
+
     /**
      * Reads the contents of a file located at the specified file path and returns it as a byte array.
      * If an error occurs during the file reading process, it prints an error message and returns null.
@@ -413,7 +421,7 @@ public class Main {
      */
     public static byte[] readByteData(final String path) {
         byte[] theBytes = null;
-        
+
         try {
             theBytes = Files.readAllBytes(Paths.get(path));
         } catch (Exception easy) {
@@ -444,7 +452,7 @@ public class Main {
         try {
             // Read the byte data from the file
             byte[] publicKeyBytes = readByteData("src/text_files/public-key.txt");
-            
+
             // Convert the byte array back into a Point object.
             return unzipData(publicKeyBytes);
         } catch (Exception e) {
@@ -462,14 +470,14 @@ public class Main {
         try {
             int[] lengths = readZipped(pointData);
             int xLen = lengths[0], yLen = lengths[1];
-            
+
             int xBytesStart = 8;
             int yBytesStart = xBytesStart + xLen;
             int theEnd = yBytesStart + yLen;
-            
+
             byte[] xBytes = Arrays.copyOfRange(pointData, xBytesStart, yBytesStart);
             byte[] yBytes = Arrays.copyOfRange(pointData, yBytesStart, theEnd);
-            
+
             return new Ed448Points(new BigInteger(xBytes),new BigInteger(yBytes));
         } catch(Exception e) { return null;}
     }
@@ -496,7 +504,7 @@ public class Main {
             System.err.println("Invalid size of byte array");
             return 0;
         }
-        
+
         int number = 0;
         for (byte b : theBytes) {
             number = (number << 8) + (b & 0xFF);
