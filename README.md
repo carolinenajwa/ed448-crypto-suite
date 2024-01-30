@@ -12,17 +12,17 @@ This project comprises a cryptographic library and application implementing SHA-
 - **Encryption & Decryption**: Supports data file encryption and decryption using public and private keys.
 
 ## File Structure
-- `src/text_files/`: Contains essential text files like passphrase, keys, and encrypted/decrypted messages.
+- `Ed448-master/src/text_files/`: Contains essential text files like passphrase, keys, and encrypted/decrypted messages.
 
 ## Command Line Arguments Set-Up
 Execute the application with these command line arguments in their specific order:
-1. FirstArgument-PassphraseFilePath:‘src/text_files/my-passphrase.txt’
-2. SecondArgument-MessageFilePath:‘src/text_files/my-message.txt’
-3. ThirdArgument-PublicKeyFilePath:‘src/text_files/public-key.txt’
-4. FourthArgument-PrivateFilePath:‘src/text_files/private-key.txt’
-5. FifthArgument-EncryptedMessageFilePath: ‘src/text_files/encrypted-message.txt’
-6. SixthArgument-DecryptedMessageFilePath: ‘src/text_files/decrypted-message.txt’
-7. SeventhArgument-SignatureFilePath:‘src/text_files/signature.txt’
+1. FirstArgument-PassphraseFilePath:‘Ed448-master/src/text_files/my-passphrase.txt’
+2. SecondArgument-MessageFilePath:‘Ed448-master/src/text_files/my-message.txt’
+3. ThirdArgument-PublicKeyFilePath:‘Ed448-master/src/text_files/public-key.txt’
+4. FourthArgument-PrivateFilePath:‘Ed448-master/src/text_files/private-key.txt’
+5. FifthArgument-EncryptedMessageFilePath: ‘Ed448-master/src/text_files/encrypted-message.txt’
+6. SixthArgument-DecryptedMessageFilePath: ‘Ed448-master/src/text_files/decrypted-message.txt’
+7. SeventhArgument-SignatureFilePath:‘Ed448-master/src/text_files/signature.txt’
 
 ## Getting Started
 1. Download and open folder Ed448-master in chosen IDE.  
@@ -42,6 +42,6 @@ Execute the application with these command line arguments in their specific orde
 - Andy Comfort
 - Brandon Morgan
 
-_Last Updated: 12/09/2023_
+_Last Updated: 01/29/2024_
 
 ---
